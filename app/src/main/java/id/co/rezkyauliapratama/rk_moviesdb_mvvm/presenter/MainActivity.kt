@@ -1,7 +1,8 @@
-package id.co.rezkyauliapratama.rk_moviesdb_mvvm
+package id.co.rezkyauliapratama.rk_moviesdb_mvvm.presenter
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import id.co.rezkyauliapratama.rk_moviesdb_mvvm.R
 
 class MainActivity : AppCompatActivity() {
 
