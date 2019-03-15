@@ -2,7 +2,7 @@ package id.co.rezkyauliapratama.rk_moviesdb_mvvm.presenter.common.views
 
 import java.util.*
 
-abstract class BaseObservableMviView<ListenerType> : BaseMviView(), ObservableMviView<ListenerType> {
+abstract class BaseObservableView<ListenerType> : BaseView(), ObservableMvcView<ListenerType> {
 
     private val mListeners = HashSet<ListenerType>()
 

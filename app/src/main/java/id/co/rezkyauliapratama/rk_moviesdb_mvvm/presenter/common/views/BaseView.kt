@@ -5,7 +5,7 @@ import androidx.annotation.StringRes
 import androidx.databinding.ViewDataBinding
 
 
-abstract class BaseMviView: MviView {
+abstract class BaseView: MvcView {
 
     override lateinit var dataBinding: ViewDataBinding
 
