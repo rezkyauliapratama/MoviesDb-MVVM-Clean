@@ -5,11 +5,13 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'androidx.navigation.safeargs'
 
 android {
-    compileSdkVersion target_sdk_version
+    def globalConfiguration = rootProject.extensions.getByName("ext")
+
+    compileSdkVersion globalConfiguration["targetSdkVersion"]
     defaultConfig {
         applicationId "id.co.rezkyauliapratama.rk_moviesdb_mvvm"
-        minSdkVersion min_sdk_version
-        targetSdkVersion target_sdk_version
+        minSdkVersion globalConfiguration["minSdkVersion"]
+        targetSdkVersion globalConfiguration["targetSdkVersion"]
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -53,42 +55,45 @@ android {
 }
 
 dependencies {
+    def appDependencies = rootProject.ext.appDependencies
+    def appTestDependencies= rootProject.ext.appTestDependencies
+
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     // Android X
-    implementation "androidx.core:core-ktx:$kotlin_core_version"
-    implementation "androidx.appcompat:appcompat:$appcompat_version"
-    implementation "androidx.constraintlayout:constraintlayout:$constraint_layout_version"
-    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
-    implementation "androidx.room:room-runtime:$room_version"
-    implementation "com.google.android.material:material:$material_component_version"
-    implementation "androidx.legacy:legacy-support-v4:$legacy_support_version"
-    kapt "androidx.room:room-compiler:$room_version"
-    implementation "androidx.room:room-rxjava2:$room_version"
-    debugImplementation "androidx.test:runner:$test_runner_version"
-    testImplementation "junit:junit:$junit_version"
+    implementation appDependencies.androidCore
+    implementation appDependencies.appcompat
+    implementation appDependencies.constraintLayout
+    implementation appDependencies.lifecycleExtensions
+    implementation appDependencies.roomRuntime
+    implementation appDependencies.materialComponent
+    implementation appDependencies.legacySupport
+    kapt appDependencies.roomCompiler
+    implementation appDependencies.roomRxJava2
+    debugImplementation appTestDependencies.testRunner
+    testImplementation appTestDependencies.junit
 
     // Kotlin
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation appDependencies.kotlinStdlib
 
     // Rx
-    implementation "io.reactivex.rxjava2:rxjava:$rxjava_version"
-    implementation "io.reactivex.rxjava2:rxandroid:$rxandroid_version"
-    implementation "com.jakewharton.rxbinding2:rxbinding:$rxbinding_version"
+    implementation appDependencies.rxJava2
+    implementation appDependencies.rxAndroid
+    implementation appDependencies.rxBinding
 
     // Dagger
-    implementation "com.google.dagger:dagger:$dagger_version"
-    kapt "com.google.dagger:dagger-compiler:$dagger_version"
+    implementation appDependencies.dagger
+    kapt appDependencies.daggerCompiler
 
     // Retrofit
-    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
-    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
-    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
-    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_logging_version"
+    implementation appDependencies.retrofit
+    implementation appDependencies.retrofitConverterJson
+    implementation appDependencies.retrofitAdapterRxJava2
+    implementation appDependencies.okhttpInterceptor
 
     // Navigation
-    implementation "android.arch.navigation:navigation-fragment-ktx:$navigation_version"
-    implementation "android.arch.navigation:navigation-ui-ktx:$navigation_version"
+    implementation appDependencies.navigationFragment
+    implementation appDependencies.navigationKtx
 }
 
 Properties props = new Properties()

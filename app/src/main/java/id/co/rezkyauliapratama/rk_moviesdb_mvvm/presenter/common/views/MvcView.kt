@@ -4,7 +4,5 @@ import androidx.databinding.ViewDataBinding
 
 
 interface MvcView {
-
-
     var dataBinding : ViewDataBinding
 }

@@ -1,12 +1,18 @@
-package id.co.rezkyauliapratama.rk_moviesdb_mvvm.presenter.common.viewmodels
+package id.co.rezkyauliapratama.rk_moviesdb_mvvm.domain.common.viewmodel
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
-abstract class BaseViewModel : ViewModel(){
+
+abstract class BaseViewModel<STATE : state> : ViewModel() {
+
+    internal val stateLiveData =
+        SingleLiveEvent<STATE>()
 
     private val compositeDisposable = CompositeDisposable()
 
+    fun getState(): LiveData<STATE> = stateLiveData
 
     protected fun Disposable.track() {
         compositeDisposable.add(this)
