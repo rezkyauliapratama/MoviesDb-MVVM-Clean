@@ -1,0 +1,12 @@
+apply plugin: 'kotlin'
+
+apply plugin: 'kotlin-kapt'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    def dependencies = rootProject.ext.commonDependencies
+
+    implementation dependencies.kotlinStdlib
+}

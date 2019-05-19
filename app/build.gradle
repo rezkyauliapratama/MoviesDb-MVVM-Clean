@@ -77,7 +77,7 @@ dependencies {
     implementation appDependencies.kotlinStdlib
 
     // Rx
-    implementation appDependencies.rxJava2
+    implementation appDependencies.rxKotlin
     implementation appDependencies.rxAndroid
     implementation appDependencies.rxBinding
 

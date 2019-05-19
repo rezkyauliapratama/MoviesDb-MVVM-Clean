@@ -1,4 +1,4 @@
-package id.co.rezkyauliapratama.rk_moviesdb_mvvm.domain.common.viewmodel
+package id.co.rezkyauliapratama.rk_moviesdb_mvvm.presenter.common.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel

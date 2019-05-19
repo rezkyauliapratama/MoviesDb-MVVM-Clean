@@ -1,20 +1,13 @@
 apply from: "$rootDir/common.gradle"
 
 dependencies {
-    def dependencies = rootProject.ext.dataDependencies
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    //dagger
-    implementation dependencies.dagger
-    implementation dependencies.daggerCompiler
+    def dependencies = rootProject.ext.networkDependencies
 
     // Retrofit
     implementation dependencies.retrofit
     implementation dependencies.retrofitConverterJson
     implementation dependencies.retrofitAdapterRxJava2
     implementation dependencies.okhttpInterceptor
-
-    //rx
-    implementation dependencies.rxKotlin
-    implementation dependencies.rxAndroid
-
 }
